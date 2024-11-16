@@ -45,7 +45,7 @@ const CanvasTopControls: React.FC<CanvasControlsProps> = ({
         value={drawingName}
         onChange={(e) => setDrawingName(e.target.value)}
         placeholder="Drawing Name"
-        className="border border-gray-400 px-2 py-1 rounded"
+        className="border border-gray-400 px-2 py-1 rounded text-black"
       />
       <button
         onClick={handleSave}
