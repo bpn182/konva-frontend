@@ -56,8 +56,10 @@ const Canvas: React.FC = () => {
       } else {
         // Save the shapes under the specified drawing name
         await saveShapes(userId, drawingName, shapes);
+        // Fetch the updated list of drawings
+        const updatedDrawingsList = await listDrawings(userId);
         // Update the drawings list and clear the drawing name input
-        setDrawings(drawingsList);
+        setDrawings(updatedDrawingsList);
         setDrawingName("");
       }
     } else {
@@ -144,6 +146,7 @@ const Canvas: React.FC = () => {
       </div>
 
       <SavedDrawings
+        currentDrawing={currentDrawing}
         drawings={drawings}
         handleLoadDrawing={handleLoadDrawing}
       />
