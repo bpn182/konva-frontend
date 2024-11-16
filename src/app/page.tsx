@@ -9,14 +9,22 @@ const UsernamePage: React.FC = () => {
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
-console.log(process.env.NEXT_PUBLIC_API_URL)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Retrieve the user by username
     const user = await getUserByUsername(username);
+
     if (user) {
+      // If the user exists, dispatch the setUser action to update the Redux store
       dispatch(setUser({ userId: user.id, username: user.username }));
     } else {
+      // If the user does not exist, create a new user
+
       const newUser = await createUser(username);
+
+      // Dispatch the setUser action to update the Redux store with the new user
       dispatch(setUser({ userId: newUser.id, username: newUser.username }));
     }
     router.push("/canvas");
