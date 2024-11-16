@@ -105,8 +105,8 @@ const Canvas: React.FC = () => {
 
   // Handles loading a drawing by its name
   const handleLoadDrawing = async (name: string) => {
-    const loadedShapes = await loadShapes(userId, name);
-
+    const loadedShapes: any = await loadShapes(userId, name);
+    console.log("loadedShapes", loadedShapes);
     // Update the Redux store with the loaded shapes
     dispatch(setShapes(loadedShapes));
     setCurrentDrawing(name);

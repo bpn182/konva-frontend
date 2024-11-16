@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getFunctions } from "firebase/functions";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -19,5 +20,6 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firestore and export
 const db = getFirestore(app);
+const functions = getFunctions(app);
 
-export { db };
+export { db, functions };
